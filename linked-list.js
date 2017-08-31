@@ -60,7 +60,7 @@ const display = list => {
   } else {
     while (node.next !== null) {
       console.log(node.value);
-      node = node.next; 
+      node = node.next;
     }
     console.log(node.value);
   }
@@ -74,9 +74,9 @@ const size = list => {
   } else {
     while (node.next !== null) {
       counter++;
-      node = node.next; 
+      node = node.next;
     }
-    console.log('size is '+ counter);
+    console.log('size is ' + counter);
   }
 };
 
@@ -85,27 +85,27 @@ const isEmpty = list => {
   console.log(node === null);
 };
 
-const findPrevious = (list, nth) =>{
+const findPrevious = (list, targetVal) => {
   let node = list.head;
-  let counter = 2;
   if (node === null) {
     console.log('List is empty, no previous item');
-  } 
-  else if (nth === 1) {
-    console.log('there is no item before ' + node.value);
-    return;
-  } 
-  else while (counter < nth) {
-    counter++;
-    node=node.next;
-    // console.log(node.value);
+  }
+  while (node.next !== null && targetVal !== node.next.value) {
+    node = node.next;
+  }
+  return node;
+};
+
+const findLast = list => {
+  let node = list.head;
+  if (node == null) {
+    console.log("there's nothing in here!");
+  }
+  while (node.next !== null) {
+    node = node.next;
   }
   console.log(node.value);
 };
-// go through each item until nth-1 item is reached
-// display the item
-
-
 
 const newList = new LinkedList();
 console.log('before insert', newList);
@@ -120,5 +120,6 @@ newList.insert(4, 'ta');
 // console.log(newList.get(1))
 // display(newList);
 // size(newList);
-isEmpty(newList);
-findPrevious(newList,4);
+// isEmpty(newList);
+console.log(findPrevious(newList, 'tau'))
+findLast(newList);
