@@ -100,6 +100,7 @@ const findPrevious = (list, nth) =>{
     node=node.next;
     // console.log(node.value);
   }
+  
   console.log(node.value);
 };
 // go through each item until nth-1 item is reached
