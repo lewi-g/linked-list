@@ -53,6 +53,23 @@ class LinkedList {
   } 
 }
 
+const display = list => {
+  let node = list.head;
+  while (!(node.next == null)) {
+    console.log(node.value)
+    node = node.next;
+  }
+  console.log(node.value);
+}
+
+const size = list => {
+  let node = list.head;
+  while (node.next != null) {
+
+   
+  }
+}
+
 
 const newList = new LinkedList;
 console.log('before insert', newList);
@@ -60,6 +77,7 @@ console.log('before insert', newList);
 newList.insert(0, 'heidi');
 newList.insert(1, 'lewi');
 newList.insert(2, 'tauhida');
-console.log(newList);
-newList.remove(0);
-console.log(newList.get(1))
+//console.log(newList);
+// newList.remove(0);
+// console.log(newList.get(1))
+display(newList)
