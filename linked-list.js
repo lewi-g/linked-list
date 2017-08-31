@@ -77,6 +77,7 @@ const size = list => {
       node = node.next;
     }
     console.log('size is ' + counter);
+    return counter;
   }
 };
 
@@ -98,13 +99,33 @@ const findPrevious = (list, targetVal) => {
 
 const findLast = list => {
   let node = list.head;
-  if (node == null) {
+  if (node === null) {
     console.log("there's nothing in here!");
   }
   while (node.next !== null) {
     node = node.next;
   }
   console.log(node.value);
+};
+
+// const findMiddle = list => {
+//   let middle = Math.floor(size(list)/2);
+//   if (size(list) % 2 !== 0) {
+//     middle += 1;
+//     return list.get(middle-1);
+//   } else {
+//     return list.get(middle-1), list.get(middle);
+//   }
+// };
+
+const findMiddle = list => {
+  let middleNode = list.head;
+  let endNode = list.head;
+  while(endNode !== null && endNode.next !== null) {
+    middleNode= middleNode.next;
+    endNode = endNode.next.next;
+  }
+  return middleNode;
 };
 
 const newList = new LinkedList();
@@ -114,12 +135,13 @@ newList.insert(0, 'heidi');
 newList.insert(1, 'lewi');
 newList.insert(2, 'tauhida');
 newList.insert(3, 'tau');
-newList.insert(4, 'ta');
+// newList.insert(4, 'ta');
 //console.log(newList);
 // newList.remove(0);
 // console.log(newList.get(1))
 // display(newList);
 // size(newList);
 // isEmpty(newList);
-console.log(findPrevious(newList, 'tau'))
-findLast(newList);
+// console.log(findPrevious(newList, 'tau'))
+// findLast(newList);
+console.log(findMiddle(newList));
