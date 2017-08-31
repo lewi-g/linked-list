@@ -90,8 +90,10 @@ const findPrevious = (list, targetVal) => {
   if (node === null) {
     console.log('List is empty, no previous item');
   }
-  
-  console.log(node.value);
+  while (node.next !== null && targetVal !== node.next.value) {
+    node = node.next;
+  }
+  return node;
 };
 
 const findLast = list => {
