@@ -128,13 +128,47 @@ const findMiddle = list => {
   return middleNode;
 };
 
+
+//Find length of the list 
+//subtract 3
+// node.next.next.next
+// when finalNode.next = null, then we wanna go back 3 and return that node
+// If the node we loop onto has a next.next value of null, that's the node we want. return
+const findThirdFromLast = list => {
+
+  let node = list.head
+  // console.log(endNode)
+  if (node.next.next === null) {
+    console.error('this list has less than 3 items');
+    return 'this list has less than 3 items';
+  }
+  let endNode = list.head.next.next.next;
+  while (endNode !== null) {
+    endNode = endNode.next
+    node = node.next
+  }
+  return node;
+}
+
+
+//list.head.next.next = list.head.next
+//how do we step backwards through the list?
+//go to the end.
+// if node = list.head,
+//   node.next = list.head.next
+// while node.next != null
+//assign list.head.next = null 
+//for item =list.head 
+//until we get to end
+
+
 const newList = new LinkedList();
-console.log('before insert', newList);
+// console.log('before insert', newList);
 
 newList.insert(0, 'heidi');
 newList.insert(1, 'lewi');
-newList.insert(2, 'tauhida');
-newList.insert(3, 'tau');
+// newList.insert(2, 'tauhida');
+// newList.insert(3, 'tau');
 // newList.insert(4, 'ta');
 //console.log(newList);
 // newList.remove(0);
@@ -144,4 +178,5 @@ newList.insert(3, 'tau');
 // isEmpty(newList);
 // console.log(findPrevious(newList, 'tau'))
 // findLast(newList);
-console.log(findMiddle(newList));
+// console.log(findMiddle(newList));
+console.log(findThirdFromLast(newList));
