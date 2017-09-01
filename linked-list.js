@@ -128,27 +128,19 @@ const findMiddle = list => {
   return middleNode;
 };
 
-
-//Find length of the list 
-//subtract 3
-// node.next.next.next
-// when finalNode.next = null, then we wanna go back 3 and return that node
-// If the node we loop onto has a next.next value of null, that's the node we want. return
 const findThirdFromLast = list => {
-
-  let node = list.head
-  // console.log(endNode)
-  if (node.next.next === null) {
+  let node = list.head;
+  if (node === null || node.next === null || node.next.next === null) {
     console.error('this list has less than 3 items');
     return 'this list has less than 3 items';
   }
   let endNode = list.head.next.next.next;
   while (endNode !== null) {
-    endNode = endNode.next
-    node = node.next
+    endNode = endNode.next;
+    node = node.next;
   }
   return node;
-}
+};
 
 
 //list.head.next.next = list.head.next
@@ -160,16 +152,37 @@ const findThirdFromLast = list => {
 //assign list.head.next = null 
 //for item =list.head 
 //until we get to end
+const reverseLinkedList = list => {
+  let firstNode = list.head;
+  let node = list.head;
+  let nextNode = list.head.next;
+  while (node.next !== null) {
+    //reassign next of firstnode to null
+    node.next = null;
+    //reassign nextNode.next =node
+    nextNode.next = node;
+    //move forward
+    firstNode = firstNode.next;
+    
+  }
+  return list;
+}
 
 
 const newList = new LinkedList();
 // console.log('before insert', newList);
 
 newList.insert(0, 'heidi');
-newList.insert(1, 'lewi');
+// newList.insert(1, 'lewi');
 // newList.insert(2, 'tauhida');
 // newList.insert(3, 'tau');
 // newList.insert(4, 'ta');
+
+// newList.insert(5, '5heidi');
+// newList.insert(6, '6lewi');
+// newList.insert(7, '7tauhida');
+// newList.insert(8, '8tau');
+// newList.insert(9, '9ta');
 //console.log(newList);
 // newList.remove(0);
 // console.log(newList.get(1))
@@ -180,3 +193,4 @@ newList.insert(1, 'lewi');
 // findLast(newList);
 // console.log(findMiddle(newList));
 console.log(findThirdFromLast(newList));
+// console.log(reverseLinkedList(newList));
